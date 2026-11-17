@@ -10,8 +10,3 @@ coverage.*
 .DS_Store
 .idea/
 .vscode/
-/worker
-/api
-/control
-/reconciler
-/fake-market

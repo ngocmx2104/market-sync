@@ -1,0 +1,39 @@
+syntax = "proto3";
+
+package control.v1;
+
+import "google/protobuf/timestamp.proto";
+
+option go_package = "github.com/ngocmx2104/market-sync/gen/control/v1;controlv1";
+
+// ControlService is the internal operator API: trigger syncs, inspect progress.
+service ControlService {
+  // TriggerSync enqueues one sync job for a tenant/source/resource window.
+  rpc TriggerSync(TriggerSyncRequest) returns (TriggerSyncResponse);
+  // GetCursor returns the persisted watermark of a tenant/source/resource.
+  rpc GetCursor(GetCursorRequest) returns (GetCursorResponse);
+}
+
+message TriggerSyncRequest {
+  string tenant_id = 1;
+  string source = 2;
+  string resource = 3; // "orders"
+  google.protobuf.Timestamp window_from = 4;
+  google.protobuf.Timestamp window_to = 5;
+}
+
+message TriggerSyncResponse {
+  string job_id = 1;
+}
+
+message GetCursorRequest {
+  string tenant_id = 1;
+  string source = 2;
+  string resource = 3;
+}
+
+message GetCursorResponse {
+  google.protobuf.Timestamp watermark = 1;
+  google.protobuf.Timestamp updated_at = 2;
+  int64 version = 3;
+}
