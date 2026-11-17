@@ -1,0 +1,38 @@
+version: "2"
+
+linters:
+  enable:
+    - bodyclose
+    - errorlint
+    - gosec
+    - misspell
+    - noctx
+    - revive
+    - unconvert
+  settings:
+    revive:
+      rules:
+        - name: unused-parameter
+          disabled: true
+    gosec:
+      excludes:
+        - G404 # math/rand is fine for the fake market's chaos
+  exclusions:
+    presets:
+      - comments
+      - std-error-handling
+    paths:
+      - gen/
+
+issues:
+  max-issues-per-linter: 0
+  max-same-issues: 0
+
+formatters:
+  enable:
+    - gofmt
+    - goimports
+  settings:
+    goimports:
+      local-prefixes:
+        - github.com/ngocmx2104/market-sync

@@ -1,0 +1,5 @@
+DROP TABLE IF EXISTS reconcile_reports;
+DROP TABLE IF EXISTS rejections;
+DROP TABLE IF EXISTS quarantine;
+DROP TABLE IF EXISTS sync_runs;
+DROP TABLE IF EXISTS orders;

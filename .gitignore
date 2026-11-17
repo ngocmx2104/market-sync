@@ -1,0 +1,17 @@
+/bin/
+*.test
+*.out
+coverage.*
+.env
+.env.*
+.terraform/
+*.tfstate
+*.tfstate.*
+.DS_Store
+.idea/
+.vscode/
+/worker
+/api
+/control
+/reconciler
+/fake-market
